@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse
+from .models import Project
 
 # Create your views here.
 
@@ -9,7 +10,10 @@ def resume(request):
   return render(request, "resume.html")
 
 def projects(request):
-  return render(request, "projects.html")
+  
+  all_objects = Project.objects.all()
+
+  return render(request, "projects.html", {"projects": all_objects})
 
 def contact(request):
   return render(request, "contact.html")
